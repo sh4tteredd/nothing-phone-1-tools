@@ -20,6 +20,8 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 
 - A Nothing phone(1) with unlocked bootloader
 
+- `curl`, `wget`, `unzip` and `tar` installed
+
 ## Usage:
 
 - clone this repo using
