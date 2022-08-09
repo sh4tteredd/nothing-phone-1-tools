@@ -6,6 +6,20 @@ check_curl() {
       exit
   fi
 }
+check_wget() {
+  if ! command -v curl > /dev/null; then
+      echo "wget is not installed!"
+      echo "In order to use this script please install wget from your package manager"
+      exit
+  fi
+}
+check_adb() {
+  if ! command -v fastboot > /dev/null; then
+      echo "Android Platform Tools are not installed!"
+      echo "In order to use this script please install the android platform tools from your package manager"
+      exit
+  fi
+}
 clean() {
     echo "cleaning..."
     rm -rf extracted*
@@ -19,16 +33,10 @@ clean() {
     rm apex_info.pb
     rm care_map.pb
 }
-check_wget() {
-  if ! command -v curl > /dev/null; then
-      echo "wget is not installed!"
-      echo "In order to use this script please install wget from your package manager"
-      exit
-  fi
-}
 echo "Nothing firmware downloader by @sh4ttered V1.1.0"
 check_curl;
 check_wget;
+check_adb;
 
 rm -rf images/ #clean from previous downloads
 FILE=payload-dumper-go.tar.gz

@@ -14,6 +14,12 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 - GNU/Linux
 - Windows support is arriving soon
 
+## Prerequisites:
+
+- [android-platform-tools](https://developer.android.com/studio/releases/platform-tools) installed for your OS
+
+- A Nothing phone(1) with unlocked bootloader
+
 ## Usage:
 
 - clone this repo using
