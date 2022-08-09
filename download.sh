@@ -2,7 +2,7 @@
 check_curl() {
   if ! command -v curl > /dev/null; then
       echo "curl is not installed!"
-      echo "In order to use this script please install wget from your package manager"
+      echo "In order to use this script please install curl from your package manager"
       exit
   fi
 }
