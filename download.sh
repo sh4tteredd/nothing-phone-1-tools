@@ -26,11 +26,15 @@ check_wget() {
       exit
   fi
 }
+echo "Nothing firmware downloader by @sh4ttered V1.1.0"
 check_curl;
 check_wget;
 
 rm -rf images/ #clean from previous downloads
-rm payload-dumper-go.tar.gz #clean from previous downloads
+FILE=payload-dumper-go.tar.gz
+if [ -f "$FILE" ]; then
+    rm payload-dumper-go.tar.gz #clean from previous downloads
+fi
 
 if [[ $(uname -m) == 'arm64' ]]; then #check if arch is arm64
   arm="1"
@@ -38,9 +42,13 @@ fi
 
 read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)" ge 
 case $ge in 
-	G ) echo "Downloading the global firmware";
+	G ) echo "Downloading the global firmware 1.1.0";
+        echo "This may take a way depending on your internet speed";
+        echo " ";
         curl https://mde1.androidfilehost.com/dl/PfKhvf7Ic7YYylFx2wkH8Q/1660138643/15664248565197192084/Global_Nothing_OS_1.1.0_Update.zip --output fw.zip;;
-	E ) echo "Downloading the EU firmware";
+	E ) echo "Downloading the EU firmware 1.1.0";
+        echo "This may take a way depending on your internet speed";
+        echo " ";
         curl https://mde1.androidfilehost.com/dl/yrsVRoAumRznxsu7QIBTow/1660130195/15664248565197192093/Europe_Nothing_OS_1.1.0_Update.zip --output fw.zip;;
     * ) echo invalid response;
 		exit 1;;

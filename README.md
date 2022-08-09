@@ -4,15 +4,58 @@
 
 I made these two script to make the life easier to who has a bricked NP(1) or if you simply want a clean install of the OS!
 
+## DISCLAIMER:
+
+**I am not responsible for any damage you made to your device. You have been warned**
+
 ## OS support:
- - macOS
- - GNU/Linux
- - Windows support is arriving soon
+
+- macOS
+- GNU/Linux
+- Windows support is arriving soon
 
 ## Usage:
 
-Instructions coming soon..!
+- clone this repo using
+
+```
+git clone https://github.com/sh4tteredd/nothing-phone-1-tools.git
+```
+
+- cd into the downloaded folder
+
+```
+cd nothing-phone-1-tools/
+```
+
+- give execution permissions to all the scripts
+
+```
+chmod +x *
+```
+
+- and first of all download all the the entire firmware that you need using
+
+```
+./download.sh
+```
+
+- if everything goes as expected, at the end your folder should be something like this:
+
+- Now you can proceed with the flash using (this will obviously delete all your personal data)
+
+```
+./flash-all.sh
+```
+
+Your Nothing Phone(1) will reboot and it (shoud) be alive!
+
+## TODO:
+
+It would be nice to download the firmware directly from Nothing's servers (actually is used an **original** version uploaded by the community)
 
 ## Credits:
 
 - [XDA Community (especially Sib64)](https://forum.xda-developers.com/t/phone-1-rom-ota-nothing-os-repo-of-nothing-os-update-04-08-2022.4464039/)
+
+- 
