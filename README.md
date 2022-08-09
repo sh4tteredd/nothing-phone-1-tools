@@ -1,8 +1,13 @@
-# nothing-phone-1-tools
+# Nothing phone(1) tools
 
 ## Collection of useful scripts for the Nothing Phone(1)
 
 I made these two script to make the life easier to who has a bricked NP(1) or if you simply want a clean install of the OS!
+
+## OS support:
+ - macOS
+ - GNU/Linux
+ - Windows support is arriving soon
 
 ### Usage:
 
