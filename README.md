@@ -42,6 +42,8 @@ chmod +x *
 
 - if everything goes as expected, at the end your folder should be something like this:
 
+<img width="1299" alt="Screenshot 2022-08-09 at 19 43 34" src="https://user-images.githubusercontent.com/55893559/183725466-d1e50e9b-f751-4027-82eb-ab72316f5260.png">
+
 - Now you can proceed with the flash using (this will obviously delete all your personal data)
 
 ```
@@ -57,5 +59,3 @@ It would be nice to download the firmware directly from Nothing's servers (actua
 ## Credits:
 
 - [XDA Community (especially Sib64)](https://forum.xda-developers.com/t/phone-1-rom-ota-nothing-os-repo-of-nothing-os-update-04-08-2022.4464039/)
-
-- 
