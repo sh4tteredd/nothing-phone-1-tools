@@ -2,7 +2,7 @@
 
 ## Collection of useful scripts for the Nothing Phone(1)
 
-I made these two script to make the life easier to who has a bricked NP(1) or if you simply wants a clean install of the OS!
+I made these two script to make the life easier to who has a bricked NP(1) or if you simply want a clean install of the OS!
 
 ### Usage:
 
