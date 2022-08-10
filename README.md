@@ -55,7 +55,7 @@ chmod +x *
 - Now you can proceed with the flash using (this will obviously delete all your personal data)
 
 ```
-./flash-all.sh
+./flash_all.sh
 ```
 
 Your Nothing Phone(1) will reboot and it (shoud) be alive!
