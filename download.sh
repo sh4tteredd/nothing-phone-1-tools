@@ -21,7 +21,7 @@ check_unzip() {
   fi
 }
 check_wget() {
-  if ! command -v curl > /dev/null; then
+  if ! command -v wget > /dev/null; then
       echo "wget is not installed!"
       echo "In order to use this script please install wget from your package manager"
       exit
