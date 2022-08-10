@@ -10,8 +10,8 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 
 ## OS support:
 
-- macOS
-- GNU/Linux
+- macOS (x86 and arm64 support)
+- GNU/Linux (x86 and arm64 support)
 - Windows support is arriving soon
 
 ## Prerequisites:
@@ -68,4 +68,3 @@ It would be nice to download the firmware directly from Nothing's servers (actua
 
 - [XDA Community (especially Sib64)](https://forum.xda-developers.com/t/phone-1-rom-ota-nothing-os-repo-of-nothing-os-update-04-08-2022.4464039/)
 - ssut for [payload-dumper-go](https://github.com/ssut/payload-dumper-go)
-- 
