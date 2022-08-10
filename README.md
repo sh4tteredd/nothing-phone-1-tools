@@ -67,3 +67,5 @@ It would be nice to download the firmware directly from Nothing's servers (actua
 ## Credits:
 
 - [XDA Community (especially Sib64)](https://forum.xda-developers.com/t/phone-1-rom-ota-nothing-os-repo-of-nothing-os-update-04-08-2022.4464039/)
+- ssut for [payload-dumper-go](https://github.com/ssut/payload-dumper-go)
+- 
