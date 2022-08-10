@@ -20,7 +20,7 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 
 - A Nothing phone(1) with unlocked bootloader
 
-- `curl`, `wget`, `unzip` and `tar` installed
+- `wget`, `unzip` and `tar` installed
 
 ## Usage:
 
@@ -62,7 +62,7 @@ Your Nothing Phone(1) will reboot and it (shoud) be alive!
 
 ## TODO:
 
-It would be nice to download the firmware directly from Nothing's servers (actually is used an **original** version uploaded by the community)
+Fix fastbootd flash (see [this](https://forum.xda-developers.com/t/nothing-phone-1-flashing-utilities.4478457/post-87267397))
 
 ## Credits:
 
