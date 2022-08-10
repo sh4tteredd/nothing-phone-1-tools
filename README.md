@@ -10,8 +10,8 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 
 ## OS support:
 
-- macOS
-- GNU/Linux
+- macOS (x86 and arm64 support)
+- GNU/Linux (x86 and arm64 support)
 - Windows support is arriving soon
 
 ## Prerequisites:
