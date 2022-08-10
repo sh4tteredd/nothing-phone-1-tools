@@ -47,15 +47,15 @@ fastboot flash multiimgoem ./images/multiimgoem.img
 
 fastboot flash odm ./images/odm.img
 
-fastboot flash product ./images/product.img
+fastboot --force flash product ./images/product.img
 
 fastboot flash qupfw ./images/qupfw.img
 
 fastboot flash shrm ./images/shrm.img
 
-fastboot flash system ./images/system.img
+fastboot --force flash system ./images/system.img
 
-fastboot flash system_ext ./images/system_ext.img
+fastboot --force flash system_ext ./images/system_ext.img
 
 fastboot flash tz ./images/tz.img
 
@@ -65,7 +65,7 @@ fastboot flash vbmeta ./images/vbmeta.img
 
 fastboot flash vbmeta_system ./images/vbmeta_system.img
 
-fastboot flash vendor ./images/vendor.img
+fastboot --force flash vendor ./images/vendor.img
 
 fastboot flash vendor_boot ./images/vendor_boot.img
 
