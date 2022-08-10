@@ -60,34 +60,43 @@ fi
 if [[ $(uname -m) == 'arm64' ]]; then #check if arch is arm64
   arm="1"
 fi
+if [[ $(uname) == 'Linux' ]]; then #GNU/Linux
+    linux="1"
+elif [[ $(uname) == 'Darwin' ]]; then #macOS
+    mac="1"
+fi
 
+echo "now you have to download the firmware from the androidfilehost website"
 read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
 case $ge in 
 	G | g) echo "Downloading the global firmware 1.1.0";
-        echo "This may take a way depending on your internet speed";
-        echo " ";
-        curl https://mde1.androidfilehost.com/dl/PfKhvf7Ic7YYylFx2wkH8Q/1660138643/15664248565197192084/Global_Nothing_OS_1.1.0_Update.zip --output fw.zip;;
+            echo "This may take a while depending on your internet speed";
+        if [[ $mac -eq "1" ]] ; then open https://androidfilehost.com/?fid=15664248565197192084 ; else xdg-open https://androidfilehost.com/?fid=15664248565197192084; fi
+        echo " ";;
 	E | e) echo "Downloading the EU firmware 1.1.0";
-        echo "This may take a way depending on your internet speed";
-        echo " ";
-        curl https://mde1.androidfilehost.com/dl/yrsVRoAumRznxsu7QIBTow/1660130195/15664248565197192093/Europe_Nothing_OS_1.1.0_Update.zip --output fw.zip;;
+        echo "This may take a while depending on your internet speed";
+        if [[ $mac -eq "1" ]] ; then open https://androidfilehost.com/?fid=15664248565197192093 ; else xdg-open https://androidfilehost.com/?fid=15664248565197192093; fi
+        echo " ";;
     * ) echo "Invalid input!";
 		exit 1;;
 esac
 
-if [[ $(uname) == 'Linux' ]]; then #GNU/Linux
+read -p "When the download finishes, paste the path of the file here (or simply drag and drop): " r1
+
+if [[ $linux -eq "1" ]]; then #GNU/Linux
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
         wget -q https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_arm64.tar.gz
     else
         wget -q https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz
     fi
-elif [[ $(uname) == 'Darwin' ]]; then #macOS
+elif [[ $mac -eq "1" ]]; then #macOS
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
         wget -q https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_arm64.tar.gz
     else
         wget -q https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_amd64.tar.gz
     fi
 fi
+mv $r1 ./fw.zip
 mv payload-dumper-go*.tar.gz payload-dumper-go.tar.gz
 tar -zxf payload-dumper-go.tar.gz payload-dumper-go
 unzip -q fw.zip
