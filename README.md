@@ -14,7 +14,7 @@ The `flash_all.sh` is not verified to work at the moment. Needs more testing.
 
 - macOS (x86 and arm64 support)
 - GNU/Linux (x86 and arm64 support)
-- Windows support is arriving soon
+- Windows support is [arriving soon](https://github.com/sh4tteredd/nothing-phone-1-tools/tree/windows-alpha)
 
 ## Prerequisites:
 
