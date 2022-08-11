@@ -76,3 +76,5 @@ fastboot flash xbl_config ./images/xbl_config.img
 fastboot $* reboot
 
 echo "Your phone(1) is rebooting"
+
+read -p "Press enter to continue"
