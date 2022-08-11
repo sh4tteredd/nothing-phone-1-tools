@@ -6,7 +6,9 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 
 ## DISCLAIMER:
 
-**I am not responsible for any damage you made to your device. You have been warned**
+**I am not responsible for any damage you made to your device. You have been warned.**
+
+The `flash_all.sh` is not verified to work at the moment. Needs more testing.
 
 ## OS support:
 
