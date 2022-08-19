@@ -17,6 +17,8 @@ if [ ! -d "$DIR" ]; then
 fi
 fastboot -w
 
+fastboot --set-active=a
+
 fastboot reboot fastboot
 
 fastboot flash abl_a ./images/abl.img
@@ -74,8 +76,6 @@ fastboot flash vendor_boot_a ./images/vendor_boot.img
 fastboot flash xbl_a ./images/xbl.img
 
 fastboot flash xbl_config_a ./images/xbl_config.img
-
-fastboot --set-active=a
 
 fastboot $* reboot
 
