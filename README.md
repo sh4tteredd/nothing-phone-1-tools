@@ -8,7 +8,7 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 
 **I am not responsible for any damage you made to your device. You have been warned.**
 
-The `flash_all.sh` is not verified to work at the moment. Needs more testing.
+The `flash_all.sh` ~~is not verified to work at the moment~~ *should work*. Needs more testing.
 
 ## OS support:
 
@@ -64,7 +64,7 @@ Your Nothing Phone(1) will reboot and it (shoud) be alive!
 
 ## TODO:
 
-Fix fastbootd flash (see [this](https://forum.xda-developers.com/t/nothing-phone-1-flashing-utilities.4478457/post-87267397))
+~~Fix fastbootd flash (see [this](https://forum.xda-developers.com/t/nothing-phone-1-flashing-utilities.4478457/post-87267397))~~ probably fixed, need to verify it.
 
 ## Credits:
 
