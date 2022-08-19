@@ -17,61 +17,65 @@ if [ ! -d "$DIR" ]; then
 fi
 fastboot -w
 
-fastboot flash abl ./images/abl.img
+fastboot --set-active=a
 
-fastboot flash aop ./images/aop.img
+fastboot reboot fastboot
 
-fastboot flash bluetooth ./images/bluetooth.img
+fastboot flash abl_a ./images/abl.img
 
-fastboot flash boot ./images/boot.img
+fastboot flash aop_a ./images/aop.img
 
-fastboot flash cpucp ./images/cpucp.img
+fastboot flash bluetooth_a ./images/bluetooth.img
 
-fastboot flash devcfg ./images/devcfg.img
+fastboot flash boot_a ./images/boot.img
 
-fastboot flash dsp ./images/dsp.img
+fastboot flash cpucp_a ./images/cpucp.img
 
-fastboot flash dtbo ./images/dtbo.img
+fastboot flash devcfg_a ./images/devcfg.img
 
-fastboot flash featenabler ./images/featenabler.img
+fastboot flash dsp_a ./images/dsp.img
 
-fastboot flash hyp ./images/hyp.img
+fastboot flash dtbo_a ./images/dtbo.img
 
-fastboot flash imagefv ./images/imagefv.img
+fastboot flash featenabler_a ./images/featenabler.img
 
-fastboot flash keymaster ./images/keymaster.img
+fastboot flash hyp_a ./images/hyp.img
 
-fastboot flash modem ./images/modem.img
+fastboot flash imagefv_a ./images/imagefv.img
 
-fastboot flash multiimgoem ./images/multiimgoem.img
+fastboot flash keymaster_a ./images/keymaster.img
 
-fastboot flash odm ./images/odm.img
+fastboot flash modem_a ./images/modem.img
 
-fastboot --force flash product ./images/product.img
+fastboot flash multiimgoem_a ./images/multiimgoem.img
 
-fastboot flash qupfw ./images/qupfw.img
+fastboot flash odm_a ./images/odm.img
 
-fastboot flash shrm ./images/shrm.img
+fastboot flash product_a ./images/product.img
 
-fastboot --force flash system ./images/system.img
+fastboot flash qupfw_a ./images/qupfw.img
 
-fastboot --force flash system_ext ./images/system_ext.img
+fastboot flash shrm_a ./images/shrm.img
 
-fastboot flash tz ./images/tz.img
+fastboot flash system_a ./images/system.img
 
-fastboot flash uefisecapp ./images/uefisecapp.img
+fastboot flash system_ext_a ./images/system_ext.img
 
-fastboot flash vbmeta ./images/vbmeta.img
+fastboot flash tz_a ./images/tz.img
 
-fastboot flash vbmeta_system ./images/vbmeta_system.img
+fastboot flash uefisecapp_a ./images/uefisecapp.img
 
-fastboot --force flash vendor ./images/vendor.img
+fastboot flash vbmeta_a ./images/vbmeta.img
 
-fastboot flash vendor_boot ./images/vendor_boot.img
+fastboot flash vbmeta_system_a ./images/vbmeta_system.img
 
-fastboot flash xbl ./images/xbl.img
+fastboot flash vendor_a ./images/vendor.img
 
-fastboot flash xbl_config ./images/xbl_config.img
+fastboot flash vendor_boot_a ./images/vendor_boot.img
+
+fastboot flash xbl_a ./images/xbl.img
+
+fastboot flash xbl_config_a ./images/xbl_config.img
 
 fastboot $* reboot
 
