@@ -20,13 +20,13 @@ The `flash_all` script ~~is not verified to work at the moment~~ *should work*. 
 
 - [android-platform-tools](https://developer.android.com/studio/releases/platform-tools) installed for your OS
 
-- A Nothing phone(1) with unlocked bootloader
+- A Nothing phone(1) with unlocked bootloader running nothingOS <= 1.1.2
 
 - `wget`, `unzip` and `tar` installed (macOS/Linux only)
 
 ## Usage (Windows):
 
-- download the repo
+- download this repository
 
 - run the `download.ps1` script with powershell (Right click on the file > click "Run with Powershell")
 
