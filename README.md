@@ -8,13 +8,13 @@ I made these two script to make the life easier to who has a bricked NP(1) or if
 
 **I am not responsible for any damage you made to your device. You have been warned.**
 
-The `flash_all.sh` ~~is not verified to work at the moment~~ *should work*. Needs more testing.
+The `flash_all` script ~~is not verified to work at the moment~~ *should work*. Needs more testing.
 
 ## OS support:
 
 - macOS (x86 and arm64 support)
 - GNU/Linux (x86 and arm64 support)
-- Windows support is [arriving soon](https://github.com/sh4tteredd/nothing-phone-1-tools/tree/windows-alpha)
+- Windows
 
 ## Prerequisites:
 
@@ -22,9 +22,17 @@ The `flash_all.sh` ~~is not verified to work at the moment~~ *should work*. Need
 
 - A Nothing phone(1) with unlocked bootloader
 
-- `wget`, `unzip` and `tar` installed
+- `wget`, `unzip` and `tar` installed (macOS/Linux only)
 
-## Usage:
+## Usage (Windows):
+
+- download the repo
+
+- run the `download.ps1` script with powershell (Right click on the file > click "Run with Powershell")
+
+- Now you can proceed with the flash running the `flash_all.bat` file (this will obviously delete all your personal data)
+
+## Usage (macOS/Linux):
 
 - clone this repo using
 
