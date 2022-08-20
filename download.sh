@@ -20,13 +20,7 @@ check_wget() {
       exit
   fi
 }
-check_adb() {
-  if ! command -v fastboot > /dev/null; then
-      echo "Android Platform Tools are not installed!"
-      echo "In order to use this script please install the android platform tools from your package manager"
-      exit
-  fi
-}
+
 clean() {
     echo "Cleaning..."
     rm -rf extracted*
@@ -41,7 +35,6 @@ clean() {
 }
 echo "Nothing firmware downloader by @sh4ttered V1.1.2"
 check_wget;
-check_adb;
 check_tar;
 check_unzip;
 
@@ -88,7 +81,7 @@ elif [[ $mac -eq "1" ]]; then #macOS
         wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_amd64.tar.gz
     fi
 fi
-
+q
 tar -zxf payload-dumper-go.tar.gz payload-dumper-go
 unzip -q fw.zip
 ./payload-dumper-go payload.bin

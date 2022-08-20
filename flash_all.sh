@@ -1,3 +1,11 @@
+check_adb() {
+  if ! command -v fastboot > /dev/null; then
+      echo "Android Platform Tools are not installed!"
+      echo "In order to use this script please install the android platform tools from your package manager"
+      exit
+  fi
+}
+check_adb;
 echo "nothing phone(1) fastboot flash by @sh4tteredd"
 echo ""
 echo "In order to gather all the files that we need, consider to run my other script available on https://github.com/sh4tteredd/nothing-phone-1-tools"
