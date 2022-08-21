@@ -85,6 +85,68 @@ fastboot flash xbl_a ./images/xbl.img
 
 fastboot flash xbl_config_a ./images/xbl_config.img
 
+fastboot reboot bootloader
+
+fastboot --set-active=b
+
+fastboot reboot fastboot
+
+fastboot flash abl_b ./images/abl.img
+
+fastboot flash aop_b ./images/aop.img
+
+fastboot flash bluetooth_b ./images/bluetooth.img
+
+fastboot flash boot_b ./images/boot.img
+
+fastboot flash cpucp_b ./images/cpucp.img
+
+fastboot flash devcfg_b ./images/devcfg.img
+
+fastboot flash dsp_b ./images/dsp.img
+
+fastboot flash dtbo_b ./images/dtbo.img
+
+fastboot flash featenabler_b ./images/featenabler.img
+
+fastboot flash hyp_b ./images/hyp.img
+
+fastboot flash imagefv_b ./images/imagefv.img
+
+fastboot flash keymaster_b ./images/keymaster.img
+
+fastboot flash modem_b ./images/modem.img
+
+fastboot flash multiimgoem_b ./images/multiimgoem.img
+
+fastboot flash odm_b ./images/odm.img
+
+fastboot flash product_b ./images/product.img
+
+fastboot flash qupfw_b ./images/qupfw.img
+
+fastboot flash shrm_b ./images/shrm.img
+
+fastboot flash system_b ./images/system.img
+
+fastboot flash system_ext_b ./images/system_ext.img
+
+fastboot flash tz_b ./images/tz.img
+
+fastboot flash uefisecapp_b ./images/uefisecapp.img
+
+fastboot flash vbmeta_b ./images/vbmeta.img
+
+fastboot flash vbmeta_system_b ./images/vbmeta_system.img
+
+fastboot flash vendor_b ./images/vendor.img
+
+fastboot flash vendor_boot_b ./images/vendor_boot.img
+
+fastboot flash xbl_b ./images/xbl.img
+
+fastboot flash xbl_config_b ./images/xbl_config.img
+
 fastboot $* reboot
 
 echo "Your phone(1) is rebooting"
