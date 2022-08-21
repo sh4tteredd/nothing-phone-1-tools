@@ -25,12 +25,12 @@ $response = Read-Host -Prompt $msg
 if ($response -eq 'g') {
     Write-Host "Downloading the global firmware v1.1.2"
     Write-Host "This may take a while depending on your internet speed"
-    wget -Uri https://android.googleapis.com/packages/ota-api/package/a244285dfb5aef198999463c2d55f353ed0e7b1b.zip -OutFile fw.zip #global
+    wget -Uri https://android.googleapis.com/packages/ota-api/package/a244285dfb5aef198999463c2d55f353ed0e7b1b.zip -OutFile fw.zip #global 1.1.2
 }
 elseif ($response -eq 'e') {
     Write-Host "Downloading the EU firmware v1.1.2"
     Write-Host "This may take a while depending on your internet speed"
-    wget -Uri https://android.googleapis.com/packages/ota-api/package/0f77244380edcc46a4d60397f5c22ea911352bfe.zip -OutFile fw.zip #global
+    wget -Uri https://android.googleapis.com/packages/ota-api/package/0f77244380edcc46a4d60397f5c22ea911352bfe.zip -OutFile fw.zip #eu 1.1.2
 }
 else {
     Write-Host "Invalid Input!"
@@ -46,9 +46,17 @@ wget -Uri https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payl
 tar -zxf payload-dumper-go.tar.gz payload-dumper-go.exe
 .\payload-dumper-go.exe payload.bin
 if (-not (Test-Path -Path ".\images") ) {
-    mkdir images
+    New-Item -ItemType "directory" -Path ".\images" | Out-Null
 }
 Move-Item -Path .\extracted*\* -Destination .\images -Force
 clean
-Write-Host -NoNewLine 'Press any key to continue...';
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+$msg = 'Do you want to flash your phone now? (y/N)? '
+$response = Read-Host -Prompt $msg
+if ($response -eq 'y') {
+    Write-Host "Starting the flash script..."
+    Start-Process -FilePath ".\flash_all.bat"
+}
+else {
+    Write-Host -NoNewLine 'Press any key to continue...';
+    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+}

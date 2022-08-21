@@ -1,9 +1,11 @@
 @echo off
 echo nothing phone(1) fastboot flash by @sh4tteredd
 echo. 
+echo DON'T flash a nothingOS version lower than that one that's currently installed on the phone!
+echo.
 echo In order to gather all the files that we need, consider to run my other script available on https://github.com/sh4tteredd/nothing-phone-1-tools
 echo.
-echo If you already have the .img files, put all your files in a subfolder called 'images' to continue
+echo Instead, if you already have the .img files, put all your files in a subfolder called 'images' to continue
 echo.
 
 fastboot %* getvar product 2>&1 | findstr /r /c:"^product: *lahaina" || echo This script is only for nothing phone(1)
@@ -12,7 +14,7 @@ fastboot %* getvar product 2>&1 | findstr /r /c:"^product: *lahaina" || exit \B 
 fastboot -w
 
 fastboot --set-active=a
-echo "Flashing A slot. Please wait..."
+echo Flashing A slot. Please wait...
 fastboot reboot fastboot
 
 fastboot flash abl_a .\images\abl.img
@@ -75,7 +77,7 @@ fastboot reboot bootloader
 
 fastboot --set-active=b
 
-echo "Flashing B slot. Please wait..."
+echo Flashing B slot. Please wait...
 
 fastboot reboot fastboot
 

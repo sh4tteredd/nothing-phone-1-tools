@@ -39,9 +39,7 @@ check_tar;
 check_unzip;
 
 rm -rf images/ #clean from previous downloads
-#if [ -f "payload-dumper-go.tar.gz" ]; then
-#    rm payload-dumper-go.tar.gz #clean from previous downloads // stupid check(?)
-#fi
+
 if [[ $(uname -m) == 'arm64' ]]; then #check if arch is arm64
   arm="1"
 fi
@@ -89,3 +87,9 @@ echo " "
 mkdir images
 mv extracted*/* images/
 clean;
+read -p "Do you want to flash your phone now? (y/N)? " yn 
+
+if [[ $yn -eq y ]]; then 
+    ./flash_all.sh
+else
+    exit

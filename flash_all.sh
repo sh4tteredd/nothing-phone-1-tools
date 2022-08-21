@@ -8,6 +8,8 @@ check_adb() {
 check_adb;
 echo "nothing phone(1) fastboot flash by @sh4tteredd"
 echo ""
+echo "DON'T flash a nothingOS version lower than that one that's currently installed on the phone!"
+echo ""
 echo "In order to gather all the files that we need, consider to run my other script available on https://github.com/sh4tteredd/nothing-phone-1-tools"
 echo ""
 echo "If you already have the .img files, put all your files in a subfolder called 'images' to continue"
@@ -18,8 +20,7 @@ read -p "Now connect your phone in fastboot mode to the PC via USB, then press e
 fastboot $* getvar product 2>&1 | grep "^product: *lahaina"
 if [ $? -ne 0 ] ; then echo "This script is only for nothing phone(1)"; exit 1; fi
 
-DIR="./images/"
-if [ ! -d "$DIR" ]; then
+if [ ! -d "./images/" ]; then
   echo "The images subfolder does not exists, check your files first!"
   exit 0
 fi
@@ -90,7 +91,7 @@ fastboot reboot bootloader
 
 fastboot --set-active=b
 
-echo "Flashing A slot. Please wait..."
+echo "Flashing B slot. Please wait..."
 
 fastboot reboot fastboot
 
@@ -151,7 +152,7 @@ fastboot flash xbl_b ./images/xbl.img
 fastboot flash xbl_config_b ./images/xbl_config.img
 
 fastboot $* reboot
-
+echo ""
 echo "Your phone(1) is rebooting"
 
 read -p "Press enter to continue"
