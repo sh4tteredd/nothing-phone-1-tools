@@ -12,7 +12,7 @@ echo "DON'T flash a nothingOS version lower than that one that's currently insta
 echo ""
 echo "In order to gather all the files that we need, consider to run my other script available on https://github.com/sh4tteredd/nothing-phone-1-tools"
 echo ""
-echo "If you already have the .img files, put all your files in a subfolder called 'images' to continue"
+echo "Instead, if you already have the .img files, put all your files in a subfolder called 'images' to continue"
 echo ""
 read -p "Now connect your phone in fastboot mode to the PC via USB, then press enter to continue"
 
