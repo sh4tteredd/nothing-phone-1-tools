@@ -26,7 +26,8 @@ fi
 fastboot -w
 
 fastboot --set-active=a
-
+echo "Flashing A slot. Please wait..."
+echo ""
 fastboot reboot fastboot
 
 fastboot flash abl_a ./images/abl.img
@@ -88,6 +89,8 @@ fastboot flash xbl_config_a ./images/xbl_config.img
 fastboot reboot bootloader
 
 fastboot --set-active=b
+
+echo "Flashing A slot. Please wait..."
 
 fastboot reboot fastboot
 
