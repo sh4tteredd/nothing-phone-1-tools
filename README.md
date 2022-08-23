@@ -52,7 +52,7 @@ cd nothing-phone-1-tools/
 chmod +x *
 ```
 
-- and first of all download all the the entire firmware that you need using
+- and first of all download all the entire firmware that you need using
 
 ```
 ./download.sh
