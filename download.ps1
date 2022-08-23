@@ -30,7 +30,7 @@ if ($response -eq 'g') {
 elseif ($response -eq 'e') {
     Write-Host "Downloading the EU firmware v1.1.3"
     Write-Host "This may take a while depending on your internet speed"
-    wget -Uri https://android.googleapis.com/packages/ota-api/package/ee4a8d890091f980aa40142d68f46abb1f08e0c5.zip -OutFile fw.zip #eu 1.1.3
+    wget -Uri https://android.googleapis.com/packages/ota-api/package/a6f363b6709ec67910b4018526d9525ccb4075f9.zip -OutFile fw.zip #eu 1.1.3
 }
 else {
     Write-Host "Invalid Input!"
