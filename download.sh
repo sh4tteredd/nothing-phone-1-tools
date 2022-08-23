@@ -37,7 +37,7 @@ read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " g
 case $ge in 
 	G | g)  echo "Downloading the global firmware v1.1.2";
             echo "This may take a while depending on your internet speed";
-            echo " ";;
+            echo " ";
             wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/a244285dfb5aef198999463c2d55f353ed0e7b1b.zip;;
 	E | e)  echo "Downloading the EU firmware v1.1.2";
             echo "This may take a while depending on your internet speed";
