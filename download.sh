@@ -15,7 +15,7 @@ clean() {
     rm fw.zip
     rm payload.bin
 }
-echo "Nothing firmware downloader by @sh4ttered V1.1.2"
+echo "Nothing firmware downloader by @sh4ttered V1.1.3"
 check wget
 check tar
 check unzip
@@ -35,14 +35,14 @@ fi
 
 read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
 case $ge in 
-	G | g)  echo "Downloading the global firmware v1.1.2";
+	G | g)  echo "Downloading the global firmware v1.1.3";
             echo "This may take a while depending on your internet speed";
             echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/a244285dfb5aef198999463c2d55f353ed0e7b1b.zip;;
-	E | e)  echo "Downloading the EU firmware v1.1.2";
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/ee4a8d890091f980aa40142d68f46abb1f08e0c5.zip;;
+	E | e)  echo "Downloading the EU firmware v1.1.3";
             echo "This may take a while depending on your internet speed";
             echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/0f77244380edcc46a4d60397f5c22ea911352bfe.zip;;
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/a6f363b6709ec67910b4018526d9525ccb4075f9.zip;;
     * )     echo "Invalid input!";
 		    exit 1;;
 esac

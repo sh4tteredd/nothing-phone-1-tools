@@ -19,18 +19,18 @@ function clean {
     
 }
 #Test-CommandExists("fastboot")
-Write-Host "Nothing firmware downloader by @sh4ttered V1.1.2"
+Write-Host "Nothing firmware downloader by @sh4ttered V1.1.3"
 $msg = 'Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? '
 $response = Read-Host -Prompt $msg
 if ($response -eq 'g') {
-    Write-Host "Downloading the global firmware v1.1.2"
+    Write-Host "Downloading the global firmware v1.1.3"
     Write-Host "This may take a while depending on your internet speed"
-    wget -Uri https://android.googleapis.com/packages/ota-api/package/a244285dfb5aef198999463c2d55f353ed0e7b1b.zip -OutFile fw.zip #global 1.1.2
+    wget -Uri https://android.googleapis.com/packages/ota-api/package/ee4a8d890091f980aa40142d68f46abb1f08e0c5.zip -OutFile fw.zip #global 1.1.3
 }
 elseif ($response -eq 'e') {
-    Write-Host "Downloading the EU firmware v1.1.2"
+    Write-Host "Downloading the EU firmware v1.1.3"
     Write-Host "This may take a while depending on your internet speed"
-    wget -Uri https://android.googleapis.com/packages/ota-api/package/0f77244380edcc46a4d60397f5c22ea911352bfe.zip -OutFile fw.zip #eu 1.1.2
+    wget -Uri https://android.googleapis.com/packages/ota-api/package/ee4a8d890091f980aa40142d68f46abb1f08e0c5.zip -OutFile fw.zip #eu 1.1.3
 }
 else {
     Write-Host "Invalid Input!"
