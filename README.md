@@ -2,13 +2,13 @@
 
 ## Collection of useful scripts for the Nothing Phone(1)
 
-I made these two script to make the life easier to who has a bricked NP(1) or if you simply want a clean install of the OS!
+I made these two scripts to make the life easier to who has a bricked NP(1) or if you simply want a clean install of the OS!
 
 ## DISCLAIMER:
 
 **I am not responsible for any damage you made to your device. You have been warned.**
 
-The `flash_all` script ~~is not verified to work at the moment~~ *should work*. Needs more testing.
+The `flash_all` script *should work* in most cases.
 
 ## OS support:
 
@@ -26,9 +26,9 @@ The `flash_all` script ~~is not verified to work at the moment~~ *should work*. 
 
 ## Usage (Windows):
 
-- download this repository
+- Download this repository
 
-- run the `download.ps1` script with powershell (Right click on the file > click "Run with Powershell")
+- Run the `download.ps1` script with powershell (Right click on the file > click "Run with Powershell")
 
 - Now you can proceed with the flash running the `flash_all.bat` file (this will obviously delete all your personal data)
 
@@ -70,11 +70,19 @@ chmod +x *
 
 Your Nothing Phone(1) will reboot and it (shoud) be alive!
 
+## TIPS:
+
+ - After the flash procedure, it may help wipe and format data from recovery.
+
 ## TODO:
 
-~~Fix fastbootd flash (see [this](https://forum.xda-developers.com/t/nothing-phone-1-flashing-utilities.4478457/post-87267397))~~ probably fixed, need to verify it.
+Fix super partition sporadics issues. On some cases it seems to "lock" the flashing directly to the dynamic partition (system, vendor etc...)
 
 ## Credits:
 
 - [XDA Community (especially Sib64)](https://forum.xda-developers.com/t/phone-1-rom-ota-nothing-os-repo-of-nothing-os-update-04-08-2022.4464039/)
 - ssut for [payload-dumper-go](https://github.com/ssut/payload-dumper-go)
+
+## Links:
+
+- [XDA Thread (for support)](https://forum.xda-developers.com/t/nothing-phone-1-flashing-utilities.4478457/)
