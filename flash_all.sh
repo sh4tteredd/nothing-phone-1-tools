@@ -151,6 +151,10 @@ fastboot flash xbl_b ./images/xbl.img
 
 fastboot flash xbl_config_b ./images/xbl_config.img
 
+fastboot reboot bootloader
+
+fastboot --set-active=a
+
 fastboot $* reboot
 echo ""
 echo "Your phone(1) is rebooting"
