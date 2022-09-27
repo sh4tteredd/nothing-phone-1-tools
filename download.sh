@@ -15,7 +15,8 @@ clean() {
     rm fw.zip
     rm payload.bin
 }
-echo "Nothing firmware downloader by @sh4ttered V1.1.3"
+echo "Nothing firmware downloader by @sh4ttered V1.1.4"
+echo "WARNING: EU Version still 1.1.3 (waiting for the full link), contrariwise global version is 1.1.4"
 check wget
 check tar
 check unzip
@@ -35,10 +36,10 @@ fi
 
 read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
 case $ge in 
-	G | g)  echo "Downloading the global firmware v1.1.3";
+	G | g)  echo "Downloading the global firmware v1.1.4";
             echo "This may take a while depending on your internet speed";
             echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/ee4a8d890091f980aa40142d68f46abb1f08e0c5.zip;;
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/54b8dbd1c303be00ef156c602b756c76d8d9b6e1.zip;;
 	E | e)  echo "Downloading the EU firmware v1.1.3";
             echo "This may take a while depending on your internet speed";
             echo " ";
