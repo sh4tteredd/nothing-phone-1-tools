@@ -15,6 +15,26 @@ clean() {
     rm fw.zip
     rm payload.bin
 }
+
+download(){
+
+read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
+case $ge in 
+	G | g)  echo "Downloading the global firmware v1.1.4";
+            echo "This may take a while depending on your internet speed";
+            echo " ";
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/54b8dbd1c303be00ef156c602b756c76d8d9b6e1.zip;;
+	E | e)  echo "Downloading the EU firmware v1.1.3";
+            echo "This may take a while depending on your internet speed";
+            echo " ";
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/a6f363b6709ec67910b4018526d9525ccb4075f9.zip;;
+    * )     echo "Invalid input!";
+		    exit 1;;
+esac
+
+
+    
+}
 echo "Nothing firmware downloader by @sh4ttered V1.1.4"
 echo "WARNING: EU Version still 1.1.3 (waiting for the full link), contrariwise global version is 1.1.4"
 check wget
@@ -34,18 +54,13 @@ else
     exit 1
 fi
 
-read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
-case $ge in 
-	G | g)  echo "Downloading the global firmware v1.1.4";
-            echo "This may take a while depending on your internet speed";
-            echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/54b8dbd1c303be00ef156c602b756c76d8d9b6e1.zip;;
-	E | e)  echo "Downloading the EU firmware v1.1.3";
-            echo "This may take a while depending on your internet speed";
-            echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/a6f363b6709ec67910b4018526d9525ccb4075f9.zip;;
-    * )     echo "Invalid input!";
-		    exit 1;;
+read -p "Have you already downloaded the firmware? (y/n)" choice
+case "$choice" in
+  y|Y ) echo "Skipping download";;
+  n|N ) echo "Downloading firmware..."
+        download;;
+    * ) echo "Invalid input!";
+        exit 1;;
 esac
 
 if [[ $linux -eq "1" ]]; then #GNU/Linux
@@ -63,6 +78,11 @@ elif [[ $mac -eq "1" ]]; then #macOS
 fi
 
 tar -zxf payload-dumper-go.tar.gz payload-dumper-go
+if [ ! -f "fw.zip" ]; then
+    echo "fw.zip not found!"
+    echo "try to re-run the script"
+    exit 1
+fi
 unzip -j fw.zip '*payload.bin*'
 ./payload-dumper-go payload.bin
 echo " "
