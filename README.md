@@ -20,7 +20,7 @@ The `flash_all` script *should work* in most cases.
 
 - **Latest** [android-platform-tools](https://developer.android.com/studio/releases/platform-tools) installed for your OS
 
-- A Nothing phone(1) with unlocked bootloader running nothingOS <= 1.1.3 (1.1.4 is supported BUT ONLY for global version devices at the moment, EU devices still need 1.1.3)
+- A Nothing phone(1) with unlocked bootloader running (or that was running) nothingOS <= 1.1.6
 
 - `wget`, `unzip` and `tar` installed (macOS/Linux only)
 
