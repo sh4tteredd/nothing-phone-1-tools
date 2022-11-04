@@ -24,6 +24,8 @@ The `flash_all` script *should work* in most cases.
 
 - `wget`, `unzip` and `tar` installed (macOS/Linux only)
 
+- Windows needs at least Windows 10 21H2 and powershell scripts enabled (Set-ExecutionPolicy Bypass)
+
 ## Usage (Windows):
 
 - Download this repository
@@ -77,6 +79,8 @@ Your Nothing Phone(1) will reboot and it (shoud) be alive!
 ## TODO:
 
 Fix super partition sporadics issues. On some cases it seems to "lock" the flashing directly to the dynamic partition (system, vendor etc...)
+
+Maybe a GUI App to make easier for everyone
 
 ## Credits:
 
