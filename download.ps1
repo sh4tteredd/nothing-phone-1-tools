@@ -19,7 +19,7 @@ function clean {
     
 }
 #Test-CommandExists("fastboot")
-Write-Host "Nothing firmware downloader by @sh4ttered V1.1.4"
+Write-Host "Nothing firmware downloader by @sh4ttered V1.1.6"
 $msg1 = 'Have you already downloaded the firmware? (y/n)'
 
 $choice = Read-Host -Prompt $msg1
@@ -29,19 +29,17 @@ if ($choice -eq 'y') {
     $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 }
 else {
-
-    Write-Host "WARNING: EU Version still 1.1.3 (waiting for the full link), Global Version 1.1.4"
     $msg = 'Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? '
     $response = Read-Host -Prompt $msg
     if ($response -eq 'g') {
-        Write-Host "Downloading the global firmware v1.1.4"
+        Write-Host "Downloading the global firmware v1.1.6"
         Write-Host "This may take a while depending on your internet speed"
-        wget -Uri https://android.googleapis.com/packages/ota-api/package/54b8dbd1c303be00ef156c602b756c76d8d9b6e1.zip -OutFile fw.zip #global 1.1.4
+        wget -Uri https://android.googleapis.com/packages/ota-api/package/99a4c814632616b365017129fa9f7e9e0080fb59.zip -OutFile fw.zip #global 1.1.6
     }
     elseif ($response -eq 'e') {
-        Write-Host "Downloading the EU firmware v1.1.3"
+        Write-Host "Downloading the EU firmware v1.1.6"
         Write-Host "This may take a while depending on your internet speed"
-        wget -Uri https://android.googleapis.com/packages/ota-api/package/a6f363b6709ec67910b4018526d9525ccb4075f9.zip -OutFile fw.zip #eu 1.1.3
+        wget -Uri https://android.googleapis.com/packages/ota-api/package/7b1f5e3f47f40fa11d92ad17203d6b68884582ae.zip -OutFile fw.zip #eu 1.1.6
     }
     else {
         Write-Host "Invalid Input!"

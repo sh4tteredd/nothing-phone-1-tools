@@ -20,14 +20,14 @@ download(){
 
 read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
 case $ge in 
-	G | g)  echo "Downloading the global firmware v1.1.4";
+	G | g)  echo "Downloading the global firmware v1.1.6";
             echo "This may take a while depending on your internet speed";
             echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/54b8dbd1c303be00ef156c602b756c76d8d9b6e1.zip;;
-	E | e)  echo "Downloading the EU firmware v1.1.3";
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/99a4c814632616b365017129fa9f7e9e0080fb59.zip;;
+	E | e)  echo "Downloading the EU firmware v1.1.6";
             echo "This may take a while depending on your internet speed";
             echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/a6f363b6709ec67910b4018526d9525ccb4075f9.zip;;
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/7b1f5e3f47f40fa11d92ad17203d6b68884582ae.zip;;
     * )     echo "Invalid input!";
 		    exit 1;;
 esac
@@ -35,8 +35,7 @@ esac
 
     
 }
-echo "Nothing firmware downloader by @sh4ttered V1.1.4"
-echo "WARNING: EU Version still 1.1.3 (waiting for the full link), contrariwise global version is 1.1.4"
+echo "Nothing firmware downloader by @sh4ttered V1.1.6"
 check wget
 check tar
 check unzip
