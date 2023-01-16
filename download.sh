@@ -24,10 +24,10 @@ case $ge in
             echo "This may take a while depending on your internet speed";
             echo " ";
             wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/99a4c814632616b365017129fa9f7e9e0080fb59.zip;;
-	E | e)  echo "Downloading the EU firmware v1.1.6";
+	E | e)  echo "Downloading the EU firmware v1.1.7";
             echo "This may take a while depending on your internet speed";
             echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/7b1f5e3f47f40fa11d92ad17203d6b68884582ae.zip;;
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/0e6855d19dbcdf328449e4d06386a6257bb1aadd.zip;;
     * )     echo "Invalid input!";
 		    exit 1;;
 esac
@@ -35,7 +35,7 @@ esac
 
     
 }
-echo "Nothing firmware downloader by @sh4ttered V1.1.6"
+echo "Nothing firmware downloader by @sh4ttered V1.1.6 (1.1.7 for EU)"
 check wget
 check tar
 check unzip
