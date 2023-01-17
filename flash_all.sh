@@ -17,8 +17,12 @@ echo ""
 read -p "Now connect your phone in fastboot mode to the PC via USB, then press enter to continue"
 
 
-fastboot $* getvar product 2>&1 | grep "^product: *lahaina"
-if [ $? -ne 0 ] ; then echo "This script is only for nothing phone(1)"; exit 1; fi
+#fastboot $* getvar product 2>&1 | grep "^product: *lahaina"
+#if [ $? -ne 0 ] ; then echo "This script is only for nothing phone(1)"; exit 1; fi
+if fastboot getvar product 2>&1 | grep -q "^product: *lahaina" || fastboot getvar product 2>&1 | grep -q "^product: *Spacewar"; then
+  echo "This script is only for nothing phone(1)"
+  exit 1
+fi
 
 if [ ! -d "./images/" ]; then
   echo "The images subfolder does not exists, check your files first!"

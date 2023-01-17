@@ -8,8 +8,15 @@ echo.
 echo Instead, if you already have the .img files, put all your files in a subfolder called 'images' to continue
 echo.
 
-fastboot %* getvar product 2>&1 | findstr /r /c:"^product: *lahaina" || echo This script is only for nothing phone(1)
-fastboot %* getvar product 2>&1 | findstr /r /c:"^product: *lahaina" || exit \B 1
+::fastboot %* getvar product 2>&1 | findstr /r /c:"^product: *lahaina" || echo This script is only for nothing phone(1)
+::fastboot %* getvar product 2>&1 | findstr /r /c:"^product: *lahaina" || exit \B 1
+
+FOR /F "tokens=2 delims=:" %%A IN ('fastboot getvar product 2^>^&1 ^| findstr /R /C:"^product: *lahaina" /C:"^product: *Spacewar"') DO (
+  IF NOT "%%A"=="" (
+    ECHO This script is only for nothing phone(1)
+    EXIT /B 1
+  )
+)
 
 fastboot -w
 
