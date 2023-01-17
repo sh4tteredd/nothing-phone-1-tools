@@ -78,9 +78,9 @@ Your Nothing Phone(1) will reboot and it (shoud) be alive!
 
 ## TODO:
 
-Fix super partition sporadics issues. On some cases it seems to "lock" the flashing directly to the dynamic partition (system, vendor etc...)
+ - Fix super partition sporadics issues. On some cases it seems to "lock" the flashing directly to the dynamic partition (system, vendor etc...)
 
-Maybe a GUI App to make easier for everyone
+ - Maybe a GUI App to make easier for everyone
 
 ## Credits:
 
