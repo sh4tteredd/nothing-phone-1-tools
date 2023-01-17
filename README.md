@@ -91,4 +91,3 @@ Maybe a GUI App to make easier for everyone
 
 - [XDA Thread (for support)](https://forum.xda-developers.com/t/nothing-phone-1-flashing-utilities.4478457/)
 - [Unbrick guide about the super partition](https://forum.xda-developers.com/t/how-to-unbrick-nothing-phone-1-fastboot-bootloop.4501439/)
-- 
