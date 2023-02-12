@@ -20,10 +20,10 @@ download(){
 
 read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
 case $ge in 
-	G | g)  echo "Downloading the global firmware v1.1.6";
+	G | g)  echo "Downloading the global firmware v1.1.7";
             echo "This may take a while depending on your internet speed";
             echo " ";
-            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/99a4c814632616b365017129fa9f7e9e0080fb59.zip;;
+            wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/254815bb72cdbddd5c9dd7cde6d10c95becc6542.zip;;
 	E | e)  echo "Downloading the EU firmware v1.1.7";
             echo "This may take a while depending on your internet speed";
             echo " ";
@@ -35,7 +35,7 @@ esac
 
     
 }
-echo "Nothing firmware downloader by @sh4ttered V1.1.6 (1.1.7 for EU)"
+echo "Nothing firmware downloader by @sh4ttered V1.1.7"
 check wget
 check tar
 check unzip
