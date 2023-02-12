@@ -19,7 +19,7 @@ function clean {
     
 }
 #Test-CommandExists("fastboot")
-Write-Host "Nothing firmware downloader by @sh4ttered V1.1.6 (1.1.7 for EU)"
+Write-Host "Nothing firmware downloader by @sh4ttered V1.1.7"
 $msg1 = 'Have you already downloaded the firmware? (y/n)'
 
 $choice = Read-Host -Prompt $msg1
@@ -32,9 +32,9 @@ else {
     $msg = 'Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? '
     $response = Read-Host -Prompt $msg
     if ($response -eq 'g') {
-        Write-Host "Downloading the global firmware v1.1.6"
+        Write-Host "Downloading the global firmware v1.1.7"
         Write-Host "This may take a while depending on your internet speed"
-        wget -Uri https://android.googleapis.com/packages/ota-api/package/99a4c814632616b365017129fa9f7e9e0080fb59.zip -OutFile fw.zip #global 1.1.6
+        wget -Uri https://android.googleapis.com/packages/ota-api/package/254815bb72cdbddd5c9dd7cde6d10c95becc6542.zip -OutFile fw.zip #global 1.1.7
     }
     elseif ($response -eq 'e') {
         Write-Host "Downloading the EU firmware v1.1.7"
