@@ -64,17 +64,18 @@ case "$choice" in
         exit 1;;
 esac
 
+#android platform tools downloader
+if ! command -v fastboot > /dev/null | ! command -v adb > /dev/null; then
+    wget -q -O platform-tools-latest-$os.zip https://dl.google.com/android/repository/platform-tools-latest-$os.zip
+fi
+
 if [[ $os -eq "linux" ]]; then #GNU/Linux
-    #linux lastest android platform tools
-    wget -q -O platform-tools-latest-linux.zip https://dl.google.com/android/repository/platform-tools-latest-linux.zip
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
         wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_arm64.tar.gz
     else
         wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz
     fi
 elif [[ $os -eq "darwin" ]]; then #macOS
-    #mac lastest android platform tools
-    wget -q -O platform-tools-latest-darwin.zip https://dl.google.com/android/repository/platform-tools-latest-darwin.zip
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
         wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_arm64.tar.gz
     else
