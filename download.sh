@@ -44,7 +44,7 @@ check unzip
 rm -rf images/ #Clean from previous downloads
 
 if [[ $(uname -m) == 'arm64' ]]; then #Check if arch is arm64
-  arm="1"
+  arch="arm64"
 fi
 if [[ $(uname) == 'Linux' ]]; then #GNU/Linux
     os="linux"
@@ -69,19 +69,9 @@ if ! command -v fastboot > /dev/null | ! command -v adb > /dev/null; then
     wget -q -O platform-tools-latest-$os.zip https://dl.google.com/android/repository/platform-tools-latest-$os.zip
 fi
 
-if [[ $os -eq "linux" ]]; then #GNU/Linux
-    if [[ $arm -eq 1 ]]; then #download arm64 version if needed
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_arm64.tar.gz
-    else
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz
-    fi
-elif [[ $os -eq "darwin" ]]; then #macOS
-    if [[ $arm -eq 1 ]]; then #download arm64 version if needed
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_arm64.tar.gz
-    else
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_amd64.tar.gz
-    fi
-fi
+#download payload-dumper amd64 and arm64 for both linux and darwin
+echo "${INFO}[*] Downloading payload-dumper for your OS ..." 
+wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_$os_$arch.tar.gz
 
 tar -zxf payload-dumper-go.tar.gz payload-dumper-go
 if [ ! -f "fw.zip" ]; then
