@@ -1,74 +1,80 @@
 #!/bin/bash
+
+ERROR='\033[0;31m' # Red Color Code
+INFO='\033[0;32m' # INFO Color Code
+
 check() {
       if ! command -v $1 > /dev/null; then
-      echo "$1 is not installed!"
-      echo "In order to use this script please install $1 from your package manager"
+      echo "${RED}[*] $1 is not installed!"
+      echo "${RED}[*] In order to use this script please install ${INFO} $1 from your package manager"
       exit
   fi
 }
 
 clean() {
-    echo "Cleaning..."
+    echo "${INFO}[*] Cleaning..."
     rm -rf extracted*
     rm payload-dumper-go.tar.gz
     rm payload-dumper-go
     rm fw.zip
     rm payload.bin
+    rm -rf platform-tools
 }
 
 download(){
-
-read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
+read -p "${INFO}[*] Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge 
 case $ge in 
-	G | g)  echo "Downloading the global firmware v1.1.7";
-            echo "This may take a while depending on your internet speed";
-            echo " ";
+	G | g)  echo "${INFO}[*] Downloading the global firmware v1.1.7";
+            echo "${INFO}[*] This may take a while depending on your internet speed \n";
+
             wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/254815bb72cdbddd5c9dd7cde6d10c95becc6542.zip;;
-	E | e)  echo "Downloading the EU firmware v1.1.7";
-            echo "This may take a while depending on your internet speed";
-            echo " ";
+	E | e)  echo "${INFO}[*] Downloading the EU firmware v1.1.7";
+            echo "${INFO}[*] This may take a while depending on your internet speed \n";
+
             wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/0e6855d19dbcdf328449e4d06386a6257bb1aadd.zip;;
-    * )     echo "Invalid input!";
+    * )     echo "${ERROR}[*] Invalid input!";
 		    exit 1;;
 esac
-
-
-    
 }
-echo "Nothing firmware downloader by @sh4ttered V1.1.7"
+
+echo "${INFO}[*] Nothing firmware downloader by @sh4ttered V1.1.7"
 check wget
 check tar
 check unzip
-rm -rf images/ #clean from previous downloads
+rm -rf images/ #Clean from previous downloads
 
-if [[ $(uname -m) == 'arm64' ]]; then #check if arch is arm64
+if [[ $(uname -m) == 'arm64' ]]; then #Check if arch is arm64
   arm="1"
 fi
 if [[ $(uname) == 'Linux' ]]; then #GNU/Linux
-    linux="1"
-elif [[ $(uname) == 'Darwin' ]]; then #macOS
-    mac="1"
+    os="linux"
+elif [[ $(uname) == 'Darwin' ]]; then #MacOS
+    os="darwin"
 else
-    echo "OS Unsupported"
+    echo "${INFO}[*] OS Unsupported"
     exit 1
 fi
 
-read -p "Have you already downloaded the firmware? (y/n)" choice
+read -p "${INFO}[*] Have you already downloaded the firmware? (y/n)" choice
 case "$choice" in
-  y|Y ) echo "Skipping download";;
-  n|N ) echo "Downloading firmware..."
+  y|Y ) echo "${INFO}[*] Skipping download";;
+  n|N ) echo "${INFO}[*] Downloading firmware..."
         download;;
-    * ) echo "Invalid input!";
+    * ) echo "${ERROR}[*] Invalid input!";
         exit 1;;
 esac
 
-if [[ $linux -eq "1" ]]; then #GNU/Linux
+if [[ $os -eq "linux" ]]; then #GNU/Linux
+    #linux lastest android platform tools
+    wget -q -O platform-tools-latest-linux.zip https://dl.google.com/android/repository/platform-tools-latest-linux.zip
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
         wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_arm64.tar.gz
     else
         wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz
     fi
-elif [[ $mac -eq "1" ]]; then #macOS
+elif [[ $os -eq "darwin" ]]; then #macOS
+    #mac lastest android platform tools
+    wget -q -O platform-tools-latest-darwin.zip https://dl.google.com/android/repository/platform-tools-latest-darwin.zip
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
         wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_arm64.tar.gz
     else
@@ -78,17 +84,22 @@ fi
 
 tar -zxf payload-dumper-go.tar.gz payload-dumper-go
 if [ ! -f "fw.zip" ]; then
-    echo "fw.zip not found!"
-    echo "try to re-run the script"
+    echo "${ERROR}[*] fw.zip not found!"
+    echo "${ERROR}[*] try to re-run the script"
     exit 1
 fi
+
 unzip -j fw.zip '*payload.bin*'
 ./payload-dumper-go payload.bin
-echo " "
+echo "\n"
 mkdir images
 mv extracted*/* images/
 clean;
-read -p "Do you want to flash your phone now? (y/N)? " yn 
+
+unzip -j 'platform-tools-latest-'$os'.zip'
+echo "${INFO}[*] Platform tools has been downloaded"
+
+read -p "${INFO}[*] Do you want to flash your phone now? (y/N)? " yn 
 if [[ $yn -eq y ]]; then 
     ./flash_all.sh
 else
