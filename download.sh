@@ -18,11 +18,10 @@ clean() {
 
 download(){
     
-    read -p "Do you need the [G]lobal firmware or the [E]uropean firmware (G/E)? " ge
     echo "Downloading the V.1.5.5 firmware";
     echo "This may take a while depending on your internet speed";
     echo " ";
-    wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/1d156af4eb59f85c62c7921e6c4a97c2761bcc3b.zip;;
+    wget -q --show-progress -O fw.zip https://android.googleapis.com/packages/ota-api/package/1d156af4eb59f85c62c7921e6c4a97c2761bcc3b.zip;
 }
 
 echo "Nothing firmware downloader by @sh4ttered V1.1.7"
@@ -52,17 +51,20 @@ case "$choice" in
     exit 1;;
 esac
 
+
+venver=$(curl -sL https://api.github.com/repos/ssut/payload-dumper-go/releases/latest | grep '"tag_name":' | cut -d'"' -f4)
+
 if [[ $linux -eq "1" ]]; then #GNU/Linux
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_arm64.tar.gz
+        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/${venver}/payload-dumper-go_${venver}_linux_arm64.tar.gz
     else
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz
+        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/${venver}/payload-dumper-go_${venver}_linux_amd64.tar.gz
     fi
     elif [[ $mac -eq "1" ]]; then #macOS
     if [[ $arm -eq 1 ]]; then #download arm64 version if needed
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_arm64.tar.gz
+        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/${venver}/payload-dumper-go_${venver}_darwin_arm64.tar.gz
     else
-        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_darwin_amd64.tar.gz
+        wget -q -O payload-dumper-go.tar.gz https://github.com/ssut/payload-dumper-go/releases/download/${venver}/payload-dumper-go_${venver}_darwin_amd64.tar.gz
     fi
 fi
 
