@@ -22,7 +22,7 @@ The `flash_all` script *should work* in most cases.
 
 - A Nothing phone(1) with unlocked bootloader running (or that was running) nothingOS <= 1.5.5
 
-- `wget`, `unzip` and `tar` installed (macOS/Linux only)
+- `wget`, `curl`, `unzip` and `tar` installed (macOS/Linux only)
 
 - Windows needs at least Windows 10 21H2 and powershell scripts enabled (Set-ExecutionPolicy Bypass)
 
