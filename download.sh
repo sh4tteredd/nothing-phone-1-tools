@@ -28,6 +28,7 @@ echo "Nothing firmware downloader by @sh4ttered V1.1.7"
 check wget
 check tar
 check unzip
+check curl
 rm -rf images/ #clean from previous downloads
 
 if [[ $(uname -m) == 'arm64' ]]; then #check if arch is arm64
