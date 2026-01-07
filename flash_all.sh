@@ -1,11 +1,15 @@
+#!/usr/bin/env bash
+
 check_adb() {
-  if ! command -v fastboot > /dev/null; then
-      echo "Android Platform Tools are not installed!"
-      echo "In order to use this script please install the android platform tools from your package manager"
-      exit
-  fi
+    if ! command -v fastboot > /dev/null; then
+        echo "Android Platform Tools are not installed!"
+        echo "In order to use this script please install the android platform tools from your package manager"
+        exit 1
+    fi
 }
-check_adb;
+
+check_adb
+
 echo "nothing phone(1) fastboot flash by @sh4tteredd"
 echo ""
 echo "DON'T flash a nothingOS version lower than that one that's currently installed on the phone!"
@@ -14,153 +18,107 @@ echo "In order to gather all the files that we need, consider to run my other sc
 echo ""
 echo "Instead, if you already have the .img files, put all your files in a subfolder called 'images' to continue"
 echo ""
+
 read -p "Now connect your phone in fastboot mode to the PC via USB, then press enter to continue"
 
-
-#fastboot $* getvar product 2>&1 | grep "^product: *lahaina"
-#if [ $? -ne 0 ] ; then echo "This script is only for nothing phone(1)"; exit 1; fi
-if fastboot getvar product 2>&1 | grep -q "^product: *lahaina" || fastboot getvar product 2>&1 | grep -q "^product: *Spacewar"; then
-  echo "This script is only for nothing phone(1)"
-  exit 1
+# Device check
+if fastboot getvar product 2>&1 | grep -qE "^product: *(lahaina|Spacewar)"; then
+    echo "This script is only for nothing phone(1)"
+    exit 1
 fi
 
+# Images folder check
 if [ ! -d "./images/" ]; then
-  echo "The images subfolder does not exists, check your files first!"
-  exit 0
+    echo "The images subfolder does not exists, check your files first!"
+    exit 1
 fi
-fastboot -w
 
-fastboot --set-active=a
+FASTBOOT="fastboot"
+IMG="./images"
+
+boot_partitions="boot vendor_boot dtbo"
+firmware_partitions="abl aop bluetooth cpucp devcfg dsp featenabler hyp imagefv keymaster modem multiimgoem qupfw shrm tz uefisecapp xbl xbl_config"
+logical_partitions="system system_ext product vendor odm"
+vbmeta_partitions="vbmeta vbmeta_system"
+
+flash() {
+    $FASTBOOT flash "$1" "$IMG/$2" || {
+        echo "Failed flashing $1"
+        exit 1
+    }
+}
+
+echo ""
+echo "Wiping data..."
+$FASTBOOT -w
+
+#################################
+# SLOT A
+#################################
+$FASTBOOT --set-active=a
 echo "Flashing A slot. Please wait..."
 echo ""
-fastboot reboot fastboot
 
-fastboot flash abl_a ./images/abl.img
+# BOOTLOADER PARTITIONS
+for p in $boot_partitions; do
+    flash "${p}_a" "${p}.img"
+done
 
-fastboot flash aop_a ./images/aop.img
+# FASTBOOTD (firmware + logical)
+$FASTBOOT reboot fastboot
 
-fastboot flash bluetooth_a ./images/bluetooth.img
+for p in $firmware_partitions; do
+    flash "${p}_a" "${p}.img"
+done
 
-fastboot flash boot_a ./images/boot.img
+for p in $logical_partitions; do
+    flash "${p}_a" "${p}.img"
+done
 
-fastboot flash cpucp_a ./images/cpucp.img
+# BACK TO BOOTLOADER (vbmeta)
+$FASTBOOT reboot bootloader
 
-fastboot flash devcfg_a ./images/devcfg.img
+for p in $vbmeta_partitions; do
+    flash "${p}_a" "${p}.img"
+done
 
-fastboot flash dsp_a ./images/dsp.img
-
-fastboot flash dtbo_a ./images/dtbo.img
-
-fastboot flash featenabler_a ./images/featenabler.img
-
-fastboot flash hyp_a ./images/hyp.img
-
-fastboot flash imagefv_a ./images/imagefv.img
-
-fastboot flash keymaster_a ./images/keymaster.img
-
-fastboot flash modem_a ./images/modem.img
-
-fastboot flash multiimgoem_a ./images/multiimgoem.img
-
-fastboot flash odm_a ./images/odm.img
-
-fastboot flash product_a ./images/product.img
-
-fastboot flash qupfw_a ./images/qupfw.img
-
-fastboot flash shrm_a ./images/shrm.img
-
-fastboot flash system_a ./images/system.img
-
-fastboot flash system_ext_a ./images/system_ext.img
-
-fastboot flash tz_a ./images/tz.img
-
-fastboot flash uefisecapp_a ./images/uefisecapp.img
-
-fastboot flash vbmeta_a ./images/vbmeta.img
-
-fastboot flash vbmeta_system_a ./images/vbmeta_system.img
-
-fastboot flash vendor_a ./images/vendor.img
-
-fastboot flash vendor_boot_a ./images/vendor_boot.img
-
-fastboot flash xbl_a ./images/xbl.img
-
-fastboot flash xbl_config_a ./images/xbl_config.img
-
-fastboot reboot bootloader
-
-fastboot --set-active=b
-
+#################################
+# SLOT B
+#################################
+$FASTBOOT --set-active=b
+echo ""
 echo "Flashing B slot. Please wait..."
+echo ""
 
-fastboot reboot fastboot
+# BOOTLOADER PARTITIONS
+for p in $boot_partitions; do
+    flash "${p}_b" "${p}.img"
+done
 
-fastboot flash abl_b ./images/abl.img
+# FASTBOOTD (firmware + logical)
+$FASTBOOT reboot fastboot
 
-fastboot flash aop_b ./images/aop.img
+for p in $firmware_partitions; do
+    flash "${p}_b" "${p}.img"
+done
 
-fastboot flash bluetooth_b ./images/bluetooth.img
+for p in $logical_partitions; do
+    flash "${p}_b" "${p}.img"
+done
 
-fastboot flash boot_b ./images/boot.img
+# BACK TO BOOTLOADER (vbmeta)
+$FASTBOOT reboot bootloader
 
-fastboot flash cpucp_b ./images/cpucp.img
+for p in $vbmeta_partitions; do
+    flash "${p}_b" "${p}.img"
+done
 
-fastboot flash devcfg_b ./images/devcfg.img
+#################################
+# FINAL
+#################################
+$FASTBOOT --set-active=a
+$FASTBOOT reboot
 
-fastboot flash dsp_b ./images/dsp.img
-
-fastboot flash dtbo_b ./images/dtbo.img
-
-fastboot flash featenabler_b ./images/featenabler.img
-
-fastboot flash hyp_b ./images/hyp.img
-
-fastboot flash imagefv_b ./images/imagefv.img
-
-fastboot flash keymaster_b ./images/keymaster.img
-
-fastboot flash modem_b ./images/modem.img
-
-fastboot flash multiimgoem_b ./images/multiimgoem.img
-
-fastboot flash odm_b ./images/odm.img
-
-fastboot flash product_b ./images/product.img
-
-fastboot flash qupfw_b ./images/qupfw.img
-
-fastboot flash shrm_b ./images/shrm.img
-
-fastboot flash system_b ./images/system.img
-
-fastboot flash system_ext_b ./images/system_ext.img
-
-fastboot flash tz_b ./images/tz.img
-
-fastboot flash uefisecapp_b ./images/uefisecapp.img
-
-fastboot flash vbmeta_b ./images/vbmeta.img
-
-fastboot flash vbmeta_system_b ./images/vbmeta_system.img
-
-fastboot flash vendor_b ./images/vendor.img
-
-fastboot flash vendor_boot_b ./images/vendor_boot.img
-
-fastboot flash xbl_b ./images/xbl.img
-
-fastboot flash xbl_config_b ./images/xbl_config.img
-
-fastboot reboot bootloader
-
-fastboot --set-active=a
-
-fastboot $* reboot
 echo ""
 echo "Your phone(1) is rebooting"
-
 read -p "Press enter to continue"
